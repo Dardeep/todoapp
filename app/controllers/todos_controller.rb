@@ -29,6 +29,13 @@ class TodosController < ApplicationController
   def index
     @todos = Todo.all
   end
+  def destroy
+    @todo = Todo.find(params[:id])
+    @todo.destroy
+    flash[:notice] = "ToDo was successfully updated"
+    redirect_to todo_path
+  end
+  
   
   private
   def todo_params
